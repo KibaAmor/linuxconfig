@@ -1,0 +1,71 @@
+# Kiba Amor<KibaAmor@gmail.com>
+# https://github.com/KibaAmor/linuxconfig
+# 20150306
+
+
+# "screen -S session_name" to create new screen session
+# "screen -list" to list all sessions
+# "screen -dr session_name" reattach an exist session and if necessary detach it first
+
+# "ctrl-a" and "d" to detach session
+# "ctrl-a" and "A" to rename window
+# "ctrl-a" and "K" to kill window
+
+
+# auto execute ~/.bashrc
+shell -${SHELL}
+
+# turn off startup message
+startup_message off
+
+# autodetach
+autodetach on
+
+# If a screen dies, don't freeze the whole screen waiting for it
+nonblock on
+
+# UTF-8 is necessary
+defutf8 on
+
+# visual bell
+vbell off
+vbell_msg "Bell on %t (%n)"
+
+# scrollback
+defscrollback 8192
+
+# informative statusbar
+hardstatus on
+hardstatus alwayslastline
+#hardstatus string "screen (%n: %t)"
+#hardstatus string "%{rw}%H%{wk}|%?%-Lw%?%{wb}%n*%f %t%?(%u)%?%{wk}%?%+Lw%?"
+#hardstatus string "%{.bW}%-w%{.rY}%n %t%{-}%+w %=%{..G} %H(%l) %{..Y} %Y/%m/%d %c:%s"
+#hardstatus string "%{= kG}[ %{G}%H %{g}][%= %{= kw}%?%-Lw%?%{r}(%{W}%n*%f%t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}][%{B} %Y/%m/%d %{W} %c %{g}]"
+hardstatus string "%{= kG}[ %{W}%H %{g}][%= %{= kw}%?%-Lw%?%{r}(%{W}%n*%f%t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}][%{W} %Y/%m/%d %{W} %c %{g}]"
+
+# turn your hardstatus line into a dynamic urxvt|xterm|aterm window title
+backtick 1 5 5 true
+#caption always "%n(%t) : %C"
+#caption always "%3n %t%? @%u%?%? [%h]%?%=%c"
+#caption always "%{= kc}%H (system load: %l)%-17= %Y/%m/%d %0c"
+#caption string "%{= kw}%Y-%m-%d %c %{= kw}%-Lw%{= kG}%{+b}[%n %t]%{-b}%{= kw}%+Lw%1`"
+#caption always
+
+# use X scrolling mechanism
+#termcapinfo xterm* ti@:te@
+#termcapinfo rxvt* 'hs:ts=\E]2;:fs=\007:ds=\E]2;\007'
+
+# 256 color
+term screen-256color
+attrcolor b ".I"    # allow bold colors - necessary for some reason
+termcapinfo xterm 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'   # tell screen how to set colors. AB = background, AF=foreground]]
+defbce on    # use current bg color for erased chars
+terminfo rxvt-unicode 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
+
+# key bind
+bind k
+bind ^k
+bind .
+bind ^\
+bind \\
+bind ' ' windowlist -b

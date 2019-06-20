@@ -1,0 +1,41 @@
+[DEFAULT]
+# Ban hosts for one hours:
+bantime = 3600
+
+#
+# JAILS
+#
+
+#
+# SSH servers
+#
+
+[sshd]
+
+# To use more aggressive sshd filter (inclusive sshd-ddos failregex):
+#filter = sshd-aggressive
+port    = 22
+logpath = %(sshd_log)s
+backend = %(sshd_backend)s
+
+
+[sshd-ddos]
+# This jail corresponds to the standard configuration in Fail2ban.
+# The mail-whois action send a notification e-mail with a whois request
+# in the body.
+port    = 22
+logpath = %(sshd_log)s
+backend = %(sshd_backend)s
+
+
+[dropbear]
+
+port     = 22
+logpath  = %(dropbear_log)s
+backend  = %(dropbear_backend)s
+
+
+[selinux-ssh]
+
+port     = 22
+logpath  = %(auditd_log)s

@@ -1,0 +1,15 @@
+[ui]
+username = Kiba Amor<KibaAmor@gmail.com>
+editor = vim
+
+[web]
+allow_push = *
+encoding = UTF-8
+port = 8888
+push_ssl = False
+
+[extensions]
+color = 
+progress = 
+children = 
+pager =
